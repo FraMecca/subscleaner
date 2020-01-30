@@ -69,10 +69,10 @@ if __name__ == '__main__':
     for filename in argv[1:]:
         print("Analyzing:", filename)
         with open(filename, 'rb') as f:
-            encoding = chardet.detect(f.readline())
+            encoding = chardet.detect(f.read())
         encoding = encoding['encoding']
-        subs = pysrt.open(filename)
-        for i, line in enumerate(subs, encoding=encoding):
+        subs = pysrt.open(filename, encoding=encoding)
+        for i, line in enumerate(subs):
             modified = False
             if ads_in_line(line.text):
                 print("Removing:", line)
