@@ -7,6 +7,11 @@ try:
 except:
     print('Missing dependency: pip3 install --user pysrt')
     exit(2)
+try:
+    import chardet
+except:
+    print('Missing dependency: pip3 install --user pysrt')
+    exit(2)
 
 ADS = ['[###]',
        '.*a Card Shark AMERICASCARDROOM.*',
@@ -62,8 +67,12 @@ if __name__ == '__main__':
         exit()
 
     for filename in argv[1:]:
+        print("Analyzing:", filename)
+        with open(filename, 'rb') as f:
+            encoding = chardet.detect(f.readline())
+        encoding = encoding['encoding']
         subs = pysrt.open(filename)
-        for i, line in enumerate(subs):
+        for i, line in enumerate(subs, encoding=encoding):
             modified = False
             if ads_in_line(line.text):
                 print("Removing:", line)
