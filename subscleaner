@@ -57,7 +57,7 @@ if __name__ == '__main__':
     from sys import argv
     from shutil import move
 
-    if '-h' in argv:
+    if '-h' in argv or len(argv) == 1:
         print('Usage: python3 cleaner.py <sub1> <sub2> <sub3> <...>')
         exit()
 
