@@ -6,6 +6,6 @@ Run the script giving as arguments the subtitle files. In case some ads are foun
 Example:
 
 ```
-python3 subcleaner.py building_on_the_past.en.srt
+subscleaner building_on_the_past.en.srt
 ```
 
