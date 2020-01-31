@@ -1,4 +1,4 @@
-# Subtitle Cleaner
+# Subscleaner
 
 ## Usage
 
