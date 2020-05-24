@@ -10,7 +10,7 @@ except:
 try:
     import chardet
 except:
-    print('Missing dependency: pip3 install --user pysrt')
+    print('Missing dependency: pip3 install --user chardet')
     exit(2)
 
 ADS = ['[###]',
