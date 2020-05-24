@@ -75,10 +75,9 @@ if __name__ == '__main__':
         for i, line in enumerate(subs):
             modified = False
             if ads_in_line(line.text):
-                print("Removing:", line)
-                print()
+                print(f"Removing: {line}\n")
                 del subs[i]
                 modified = True
-        if modified:
-            move(filename, filename+'.bak')
-            subs.save(filename)
+            if modified:
+                move(filename, filename+'.bak')
+                subs.save(filename)
