@@ -15,6 +15,7 @@ except:
 
 ADS = ['[###]',
        '.*a Card Shark AMERICASCARDROOM.*',
+       '.*OpenSubtitles.*',
        '.*Advertise your product or brand here.*',
        '.*Apóyanos y conviértete en miembro VIP Para.*',
        '.*Addic7ed.*',
@@ -54,7 +55,7 @@ ADS = ['[###]',
 
 def ads_in_line(line):
     for pt in ADS:
-        if re.match(pt, line):
+        if re.match(pt, line, re.DOTALL):
             return True
     return False
 
@@ -72,12 +73,12 @@ if __name__ == '__main__':
             encoding = chardet.detect(f.read())
         encoding = encoding['encoding']
         subs = pysrt.open(filename, encoding=encoding)
+        modified = False
         for i, line in enumerate(subs):
-            modified = False
             if ads_in_line(line.text):
                 print(f"Removing: {line}\n")
                 del subs[i]
                 modified = True
-            if modified:
-                move(filename, filename+'.bak')
-                subs.save(filename)
+        if modified:
+            move(filename, filename+'.bak')
+            subs.save(filename)
