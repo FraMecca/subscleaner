@@ -27,6 +27,9 @@ ADS = ['[###]',
        '.*Everyone is intimidated by a shark. Become.*',
        '.*Juegue Poker en Línea por Dinero Real.*',
        '.*OpenSubtitles.*',
+       '.*Open Subtitles.*',
+       '.*MKV Player.*',
+       '.*MKV player.*',
        '.*Resync.*for.*',
        '.*Resync.*improved.*',
        '.*Ripped?By.*',
@@ -76,7 +79,7 @@ if __name__ == '__main__':
         modified = False
         for i, line in enumerate(subs):
             if ads_in_line(line.text):
-                print(f"Removing: {line}\n")
+                print("Removing: "+str(line)+"\n")
                 del subs[i]
                 modified = True
         if modified:
