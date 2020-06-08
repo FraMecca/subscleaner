@@ -12,7 +12,7 @@ or via virtual environment.
 ## Installation
 Clone the repo and run
 ```
-python3 setup.py --user install
+python3 setup.py install --user 
 ```
 or `chmod +x` the script and copy it in a $PATH directory.
 
